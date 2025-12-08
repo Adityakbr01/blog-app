@@ -4,9 +4,12 @@ import path from "path";
 
 const NODE_ENV = process.env.NODE_ENV || "development";
 
-dotenv.config({
-  path: path.resolve(process.cwd(), `.env.${NODE_ENV}`),
-});
+// Only load .env file in development - production uses environment variables directly
+if (NODE_ENV !== "production") {
+  dotenv.config({
+    path: path.resolve(process.cwd(), `.env.${NODE_ENV}`),
+  });
+}
 
 // ✅ ZOD SCHEMA
 const envSchema = z.object({

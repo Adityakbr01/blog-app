@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon",
     "build": "tsc && tsc-alias",
-    "start": "cross-env NODE_ENV=production node dist/src/server.js",
+    "start": "node dist/src/server.js",
     "test": "cross-env NODE_ENV=test tsx src/server.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
