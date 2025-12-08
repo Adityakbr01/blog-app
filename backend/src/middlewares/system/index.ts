@@ -6,6 +6,7 @@ import compression from "compression";
 import rateLimit from "express-rate-limit";
 import { httpLogger } from "./httpLogger.js";
 import { env } from "@/config/env.js";
+import app from "@/app.js";
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -16,6 +17,9 @@ const limiter = rateLimit({
 });
 
 const middlewares = [
+
+  app.set("trust proxy", 1),
+
   helmet(),
   cors({
     origin: env.NODE_ENV === "production" ? env.FRONTEND_URL : env.FRONTEND_URL,
