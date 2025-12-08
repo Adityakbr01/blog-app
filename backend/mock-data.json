@@ -1,0 +1,614 @@
+{
+    "info": {
+        "name": "Blog App API",
+        "description": "Complete API test data for the Blog App backend",
+        "version": "1.0.0"
+    },
+    "users": {
+        "admin": {
+            "name": "Admin User",
+            "email": "admin@blogapp.com",
+            "password": "Admin@123456",
+            "role": "ADMIN"
+        },
+        "user1": {
+            "name": "John Doe",
+            "email": "john.doe@example.com",
+            "password": "Password@123",
+            "username": "johndoe",
+            "bio": "Full-stack developer and tech enthusiast. Love writing about JavaScript, React, and Node.js."
+        },
+        "user2": {
+            "name": "Jane Smith",
+            "email": "jane.smith@example.com",
+            "password": "Password@123",
+            "username": "janesmith",
+            "bio": "Frontend developer passionate about UI/UX design and web accessibility."
+        },
+        "user3": {
+            "name": "Bob Wilson",
+            "email": "bob.wilson@example.com",
+            "password": "Password@123",
+            "username": "bobwilson",
+            "bio": "Backend engineer specializing in microservices and cloud architecture."
+        }
+    },
+    "categories": [
+        {
+            "name": "Technology",
+            "description": "Latest tech news, tutorials, and insights",
+            "color": "#3B82F6",
+            "icon": "laptop"
+        },
+        {
+            "name": "Programming",
+            "description": "Coding tutorials, best practices, and tips",
+            "color": "#10B981",
+            "icon": "code"
+        },
+        {
+            "name": "Web Development",
+            "description": "Frontend, backend, and full-stack web development",
+            "color": "#8B5CF6",
+            "icon": "globe"
+        },
+        {
+            "name": "DevOps",
+            "description": "CI/CD, cloud infrastructure, and automation",
+            "color": "#F59E0B",
+            "icon": "server"
+        },
+        {
+            "name": "AI & Machine Learning",
+            "description": "Artificial intelligence and ML tutorials",
+            "color": "#EF4444",
+            "icon": "brain"
+        },
+        {
+            "name": "Career",
+            "description": "Career advice, interviews, and professional growth",
+            "color": "#EC4899",
+            "icon": "briefcase"
+        },
+        {
+            "name": "Lifestyle",
+            "description": "Work-life balance, productivity, and developer life",
+            "color": "#14B8A6",
+            "icon": "heart"
+        }
+    ],
+    "posts": [
+        {
+            "title": "Getting Started with Node.js and Express in 2024",
+            "description": "A comprehensive guide to building modern REST APIs with Node.js, Express, and TypeScript. Learn best practices and patterns.",
+            "content": "Node.js has revolutionized backend development, and when combined with Express.js, it becomes a powerful tool for building scalable web applications.\n\n## Why Node.js?\n\nNode.js offers several advantages:\n- **Non-blocking I/O**: Perfect for handling multiple concurrent connections\n- **JavaScript everywhere**: Use the same language on frontend and backend\n- **Rich ecosystem**: npm has millions of packages to accelerate development\n- **Great for real-time apps**: WebSockets and event-driven architecture\n\n## Setting Up Your Project\n\nFirst, initialize your project:\n\n```bash\nmkdir my-api\ncd my-api\nnpm init -y\nnpm install express typescript @types/express @types/node ts-node nodemon\n```\n\n## Creating Your First Route\n\n```typescript\nimport express from 'express';\n\nconst app = express();\napp.use(express.json());\n\napp.get('/api/health', (req, res) => {\n  res.json({ status: 'healthy' });\n});\n\napp.listen(3000, () => {\n  console.log('Server running on port 3000');\n});\n```\n\n## Best Practices\n\n1. **Use TypeScript**: Catch errors at compile time\n2. **Implement proper error handling**: Create custom error classes\n3. **Use environment variables**: Never hardcode secrets\n4. **Add request validation**: Use Zod or Joi\n5. **Structure your code**: Follow MVC or clean architecture\n\n## Conclusion\n\nNode.js and Express provide a solid foundation for building modern APIs. Combined with TypeScript, you get type safety and better developer experience.",
+            "tags": [
+                "nodejs",
+                "express",
+                "typescript",
+                "backend",
+                "api"
+            ],
+            "categorySlug": "web-development",
+            "isPublished": true
+        },
+        {
+            "title": "Mastering React Hooks: A Complete Guide",
+            "description": "Deep dive into React Hooks including useState, useEffect, useContext, useReducer, and custom hooks with practical examples.",
+            "content": "React Hooks have transformed how we write React components. Let's explore the most important hooks and how to use them effectively.\n\n## useState - Managing Local State\n\n```jsx\nconst [count, setCount] = useState(0);\nconst [user, setUser] = useState({ name: '', email: '' });\n```\n\n**Tips:**\n- Use multiple useState for unrelated state\n- Use objects for related state\n- Remember state updates are async\n\n## useEffect - Side Effects\n\n```jsx\nuseEffect(() => {\n  // Runs on mount and when dependencies change\n  const fetchData = async () => {\n    const data = await api.getUser(userId);\n    setUser(data);\n  };\n  fetchData();\n  \n  return () => {\n    // Cleanup function\n  };\n}, [userId]);\n```\n\n## useContext - Global State\n\n```jsx\nconst ThemeContext = createContext('light');\n\nfunction App() {\n  return (\n    <ThemeContext.Provider value=\"dark\">\n      <ChildComponent />\n    </ThemeContext.Provider>\n  );\n}\n\nfunction ChildComponent() {\n  const theme = useContext(ThemeContext);\n  return <div className={theme}>Hello</div>;\n}\n```\n\n## Custom Hooks\n\n```jsx\nfunction useLocalStorage(key, initialValue) {\n  const [value, setValue] = useState(() => {\n    const stored = localStorage.getItem(key);\n    return stored ? JSON.parse(stored) : initialValue;\n  });\n  \n  useEffect(() => {\n    localStorage.setItem(key, JSON.stringify(value));\n  }, [key, value]);\n  \n  return [value, setValue];\n}\n```\n\n## Best Practices\n\n1. Follow the Rules of Hooks\n2. Keep hooks at the top level\n3. Extract complex logic into custom hooks\n4. Use the ESLint plugin for hooks\n\nHooks make React code more readable and reusable. Master them to become a better React developer!",
+            "tags": [
+                "react",
+                "hooks",
+                "javascript",
+                "frontend",
+                "useState",
+                "useEffect"
+            ],
+            "categorySlug": "programming",
+            "isPublished": true
+        },
+        {
+            "title": "MongoDB vs PostgreSQL: Choosing the Right Database",
+            "description": "An in-depth comparison of MongoDB and PostgreSQL to help you choose the right database for your next project.",
+            "content": "Choosing between MongoDB and PostgreSQL is a common dilemma. Let's compare them across various dimensions.\n\n## Data Model\n\n### MongoDB (Document-based)\n```json\n{\n  \"_id\": \"ObjectId\",\n  \"name\": \"John\",\n  \"orders\": [\n    { \"item\": \"Book\", \"price\": 29.99 },\n    { \"item\": \"Pen\", \"price\": 4.99 }\n  ]\n}\n```\n\n### PostgreSQL (Relational)\n```sql\nCREATE TABLE users (\n  id SERIAL PRIMARY KEY,\n  name VARCHAR(100)\n);\n\nCREATE TABLE orders (\n  id SERIAL PRIMARY KEY,\n  user_id INT REFERENCES users(id),\n  item VARCHAR(100),\n  price DECIMAL\n);\n```\n\n## When to Choose MongoDB\n\n- Flexible schema requirements\n- Rapid prototyping\n- Hierarchical data storage\n- Horizontal scaling needs\n- Real-time analytics\n\n## When to Choose PostgreSQL\n\n- Complex queries and joins\n- ACID compliance is critical\n- Strong data integrity needed\n- Existing SQL expertise\n- Advanced features (full-text search, GIS)\n\n## Performance Comparison\n\n| Operation | MongoDB | PostgreSQL |\n|-----------|---------|------------|\n| Simple reads | Fast | Fast |\n| Complex joins | Slower | Faster |\n| Write-heavy | Excellent | Good |\n| Aggregations | Good | Excellent |\n\n## Conclusion\n\nThere's no one-size-fits-all answer. Choose based on:\n- Your data structure\n- Query patterns\n- Scaling requirements\n- Team expertise\n\nBoth are excellent databases - pick the one that fits your use case!",
+            "tags": [
+                "mongodb",
+                "postgresql",
+                "database",
+                "nosql",
+                "sql",
+                "backend"
+            ],
+            "categorySlug": "technology",
+            "isPublished": true
+        },
+        {
+            "title": "Docker for Developers: From Zero to Hero",
+            "description": "Learn Docker from scratch. Understand containers, images, volumes, networking, and Docker Compose with hands-on examples.",
+            "content": "Docker has become essential for modern software development. Let's learn it step by step.\n\n## What is Docker?\n\nDocker allows you to package applications with all dependencies into standardized units called containers.\n\n## Key Concepts\n\n- **Image**: Blueprint for containers (like a class)\n- **Container**: Running instance of an image (like an object)\n- **Dockerfile**: Instructions to build an image\n- **Volume**: Persistent data storage\n- **Network**: Communication between containers\n\n## Your First Dockerfile\n\n```dockerfile\nFROM node:20-alpine\n\nWORKDIR /app\n\nCOPY package*.json ./\nRUN npm ci --only=production\n\nCOPY . .\n\nEXPOSE 3000\n\nCMD [\"node\", \"dist/server.js\"]\n```\n\n## Essential Commands\n\n```bash\n# Build an image\ndocker build -t myapp:latest .\n\n# Run a container\ndocker run -d -p 3000:3000 --name myapp myapp:latest\n\n# View running containers\ndocker ps\n\n# View logs\ndocker logs myapp\n\n# Stop container\ndocker stop myapp\n\n# Remove container\ndocker rm myapp\n```\n\n## Docker Compose\n\n```yaml\nversion: '3.8'\n\nservices:\n  app:\n    build: .\n    ports:\n      - \"3000:3000\"\n    environment:\n      - NODE_ENV=production\n      - MONGODB_URI=mongodb://mongo:27017/mydb\n    depends_on:\n      - mongo\n      - redis\n\n  mongo:\n    image: mongo:7\n    volumes:\n      - mongo_data:/data/db\n\n  redis:\n    image: redis:alpine\n\nvolumes:\n  mongo_data:\n```\n\n## Best Practices\n\n1. Use multi-stage builds\n2. Don't run as root\n3. Use .dockerignore\n4. Keep images small\n5. One process per container\n\nDocker simplifies development, testing, and deployment. Start using it today!",
+            "tags": [
+                "docker",
+                "devops",
+                "containers",
+                "deployment",
+                "kubernetes"
+            ],
+            "categorySlug": "devops",
+            "isPublished": true
+        },
+        {
+            "title": "Introduction to Machine Learning with Python",
+            "description": "Start your ML journey with Python. Learn about supervised learning, classification, regression, and build your first model.",
+            "content": "Machine Learning is transforming industries. Let's get started with the fundamentals.\n\n## What is Machine Learning?\n\nML is a subset of AI where computers learn from data without being explicitly programmed.\n\n## Types of ML\n\n1. **Supervised Learning**: Learn from labeled data\n2. **Unsupervised Learning**: Find patterns in unlabeled data\n3. **Reinforcement Learning**: Learn through trial and error\n\n## Setting Up Your Environment\n\n```bash\npip install numpy pandas scikit-learn matplotlib jupyter\n```\n\n## Your First ML Model\n\n```python\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import accuracy_score\n\n# Load data\ndf = pd.read_csv('data.csv')\n\n# Prepare features and target\nX = df.drop('target', axis=1)\ny = df['target']\n\n# Split data\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=42\n)\n\n# Train model\nmodel = RandomForestClassifier(n_estimators=100)\nmodel.fit(X_train, y_train)\n\n# Predict\npredictions = model.predict(X_test)\n\n# Evaluate\naccuracy = accuracy_score(y_test, predictions)\nprint(f'Accuracy: {accuracy:.2%}')\n```\n\n## Common Algorithms\n\n| Algorithm | Use Case |\n|-----------|----------|\n| Linear Regression | Predict continuous values |\n| Logistic Regression | Binary classification |\n| Decision Trees | Interpretable models |\n| Random Forest | Robust predictions |\n| K-Means | Clustering |\n| Neural Networks | Complex patterns |\n\n## Tips for Beginners\n\n1. Start with simple algorithms\n2. Understand your data first\n3. Feature engineering is crucial\n4. Don't skip validation\n5. Learn from Kaggle competitions\n\nML is a vast field - start small and keep learning!",
+            "tags": [
+                "machine-learning",
+                "python",
+                "ai",
+                "data-science",
+                "scikit-learn"
+            ],
+            "categorySlug": "ai-machine-learning",
+            "isPublished": true
+        },
+        {
+            "title": "How I Landed My First Developer Job in 6 Months",
+            "description": "My personal journey from complete beginner to employed software developer. Tips, resources, and lessons learned.",
+            "content": "Six months ago, I wrote my first line of code. Today, I'm a professional software developer. Here's my story.\n\n## Month 1-2: The Fundamentals\n\nI started with:\n- HTML & CSS (2 weeks)\n- JavaScript basics (4 weeks)\n- Built 5 small projects\n\n**Key resources:**\n- freeCodeCamp\n- The Odin Project\n- JavaScript.info\n\n## Month 3-4: Going Deeper\n\n- React.js (3 weeks)\n- Node.js & Express (2 weeks)\n- MongoDB (1 week)\n- Built 3 full-stack projects\n\n**Projects I built:**\n1. Todo app with authentication\n2. Blog platform\n3. E-commerce site (simplified)\n\n## Month 5: Job Preparation\n\n- Polished my portfolio\n- Created GitHub profile README\n- Practiced DSA (2 hours daily)\n- Mock interviews with friends\n\n## Month 6: Job Hunt\n\n- Applied to 150+ jobs\n- Got 12 interview calls\n- 5 technical rounds\n- 2 offers!\n\n## What Worked for Me\n\n1. **Consistency**: Coded 4+ hours daily\n2. **Projects over tutorials**: Build, don't just watch\n3. **Networking**: Twitter, LinkedIn, Discord communities\n4. **Open source**: Contributed to 3 projects\n5. **Teaching**: Blogged about what I learned\n\n## What I'd Do Differently\n\n- Start DSA earlier\n- Focus on fewer technologies deeply\n- Network more from day 1\n- Take breaks (burnout is real)\n\n## Tips for You\n\n1. Don't compare your journey to others\n2. Build in public\n3. Embrace rejection\n4. Keep learning after getting hired\n\nIf I can do it, so can you. Start today!",
+            "tags": [
+                "career",
+                "job-hunting",
+                "beginner",
+                "self-taught",
+                "tips"
+            ],
+            "categorySlug": "career",
+            "isPublished": true
+        },
+        {
+            "title": "Building a REST API with Authentication in Node.js",
+            "description": "Complete guide to building a secure REST API with JWT authentication, refresh tokens, and role-based access control.",
+            "content": "Let's build a production-ready REST API with proper authentication.\n\n## Project Setup\n\n```bash\nmkdir secure-api\ncd secure-api\nnpm init -y\nnpm install express mongoose bcrypt jsonwebtoken dotenv\nnpm install -D typescript @types/node @types/express\n```\n\n## User Model\n\n```typescript\nimport mongoose from 'mongoose';\nimport bcrypt from 'bcrypt';\n\nconst userSchema = new mongoose.Schema({\n  email: { type: String, required: true, unique: true },\n  password: { type: String, required: true },\n  role: { type: String, enum: ['user', 'admin'], default: 'user' },\n  refreshTokens: [String]\n});\n\nuserSchema.pre('save', async function(next) {\n  if (!this.isModified('password')) return next();\n  this.password = await bcrypt.hash(this.password, 12);\n  next();\n});\n\nuserSchema.methods.comparePassword = function(candidatePassword) {\n  return bcrypt.compare(candidatePassword, this.password);\n};\n\nexport default mongoose.model('User', userSchema);\n```\n\n## JWT Utilities\n\n```typescript\nimport jwt from 'jsonwebtoken';\n\nexport const generateAccessToken = (userId: string) => {\n  return jwt.sign({ userId }, process.env.JWT_SECRET!, { expiresIn: '15m' });\n};\n\nexport const generateRefreshToken = (userId: string) => {\n  return jwt.sign({ userId }, process.env.REFRESH_SECRET!, { expiresIn: '7d' });\n};\n```\n\n## Auth Middleware\n\n```typescript\nexport const authMiddleware = async (req, res, next) => {\n  try {\n    const token = req.headers.authorization?.split(' ')[1];\n    if (!token) throw new Error('No token');\n    \n    const decoded = jwt.verify(token, process.env.JWT_SECRET!);\n    req.user = await User.findById(decoded.userId);\n    next();\n  } catch (error) {\n    res.status(401).json({ message: 'Unauthorized' });\n  }\n};\n```\n\n## Security Best Practices\n\n1. Hash passwords with bcrypt\n2. Use short-lived access tokens\n3. Implement refresh token rotation\n4. Add rate limiting\n5. Validate all inputs\n6. Use HTTPS in production\n7. Implement CORS properly\n\nSecure authentication is critical for any application. Never cut corners on security!",
+            "tags": [
+                "nodejs",
+                "authentication",
+                "jwt",
+                "security",
+                "rest-api"
+            ],
+            "categorySlug": "web-development",
+            "isPublished": true
+        },
+        {
+            "title": "Work-Life Balance as a Developer: My Approach",
+            "description": "How I maintain productivity while avoiding burnout. Tips for staying healthy and happy as a software developer.",
+            "content": "After 5 years in tech, I've learned that burnout is real. Here's how I stay balanced.\n\n## My Daily Routine\n\n**Morning (6 AM - 9 AM)**\n- Wake up without alarm (8 hours sleep)\n- 30 min exercise\n- Healthy breakfast\n- No phone for first hour\n\n**Work (9 AM - 6 PM)**\n- Deep work: 9-12 (no meetings)\n- Lunch break: 12-1 (away from desk)\n- Meetings/collaboration: 1-4\n- Wrap up/planning: 4-6\n\n**Evening (6 PM onwards)**\n- No work emails/Slack\n- Hobbies (guitar, cooking, reading)\n- Quality time with family\n- Wind down by 10 PM\n\n## Strategies That Work\n\n### 1. Strict Boundaries\n- Work stays at work\n- No Slack on phone\n- Calendar blocking for personal time\n\n### 2. Regular Exercise\n- Gym 4x per week\n- Walking meetings\n- Standing desk\n\n### 3. Mental Health\n- Therapy when needed\n- Meditation (10 min daily)\n- Journaling\n\n### 4. Continuous Learning (Without Pressure)\n- 30 min/day of learning\n- Focus on interest, not FOMO\n- It's okay to not know everything\n\n## Signs of Burnout\n\nWatch for these:\n- Dreading work every day\n- Constant fatigue\n- Cynicism about projects\n- Decreased productivity\n- Physical symptoms (headaches, insomnia)\n\n## If You're Burning Out\n\n1. Talk to someone (manager, therapist)\n2. Take time off (use your PTO!)\n3. Reduce commitments\n4. Re-evaluate priorities\n5. Consider a change if needed\n\nYour health > Your job. Always.",
+            "tags": [
+                "work-life-balance",
+                "burnout",
+                "mental-health",
+                "productivity",
+                "career"
+            ],
+            "categorySlug": "lifestyle",
+            "isPublished": true
+        },
+        {
+            "title": "TypeScript Best Practices for 2024",
+            "description": "Level up your TypeScript skills with these modern best practices, tips, and patterns used by professional developers.",
+            "content": "TypeScript has evolved significantly. Here are the best practices for 2024.\n\n## 1. Use Strict Mode\n\n```json\n{\n  \"compilerOptions\": {\n    \"strict\": true,\n    \"noUncheckedIndexedAccess\": true,\n    \"noImplicitReturns\": true\n  }\n}\n```\n\n## 2. Prefer Interfaces for Objects\n\n```typescript\n// Good\ninterface User {\n  id: string;\n  name: string;\n  email: string;\n}\n\n// Use type for unions, intersections, mapped types\ntype Status = 'pending' | 'active' | 'inactive';\ntype UserWithStatus = User & { status: Status };\n```\n\n## 3. Use Const Assertions\n\n```typescript\nconst ROLES = ['admin', 'user', 'guest'] as const;\ntype Role = typeof ROLES[number]; // 'admin' | 'user' | 'guest'\n\nconst config = {\n  api: 'https://api.example.com',\n  timeout: 5000\n} as const;\n```\n\n## 4. Discriminated Unions\n\n```typescript\ntype Result<T> = \n  | { success: true; data: T }\n  | { success: false; error: string };\n\nfunction handleResult<T>(result: Result<T>) {\n  if (result.success) {\n    console.log(result.data); // TypeScript knows data exists\n  } else {\n    console.error(result.error); // TypeScript knows error exists\n  }\n}\n```\n\n## 5. Utility Types\n\n```typescript\ninterface User {\n  id: string;\n  name: string;\n  email: string;\n  password: string;\n}\n\ntype PublicUser = Omit<User, 'password'>;\ntype CreateUser = Pick<User, 'name' | 'email' | 'password'>;\ntype PartialUser = Partial<User>;\ntype RequiredUser = Required<User>;\n```\n\n## 6. Zod for Runtime Validation\n\n```typescript\nimport { z } from 'zod';\n\nconst UserSchema = z.object({\n  name: z.string().min(2),\n  email: z.string().email(),\n  age: z.number().min(18)\n});\n\ntype User = z.infer<typeof UserSchema>;\n```\n\n## 7. Error Handling\n\n```typescript\nclass AppError extends Error {\n  constructor(\n    message: string,\n    public statusCode: number,\n    public code: string\n  ) {\n    super(message);\n    this.name = 'AppError';\n  }\n}\n\nfunction assertNever(x: never): never {\n  throw new Error(`Unexpected value: ${x}`);\n}\n```\n\nTypeScript makes JavaScript development safer and more enjoyable. Embrace it fully!",
+            "tags": [
+                "typescript",
+                "javascript",
+                "best-practices",
+                "programming",
+                "web-development"
+            ],
+            "categorySlug": "programming",
+            "isPublished": true
+        },
+        {
+            "title": "Understanding Git Branching Strategies",
+            "description": "Compare Git Flow, GitHub Flow, and Trunk Based Development. Learn which branching strategy is right for your team.",
+            "content": "Choosing the right Git branching strategy is crucial for team productivity. Let's compare the popular approaches.\n\n## Git Flow\n\n**Structure:**\n- `main`: Production-ready code\n- `develop`: Integration branch\n- `feature/*`: New features\n- `release/*`: Release preparation\n- `hotfix/*`: Production fixes\n\n**Pros:**\n- Clear separation of concerns\n- Parallel development\n- Structured releases\n\n**Cons:**\n- Complex for small teams\n- Long-lived branches\n- Merge conflicts\n\n**Best for:** Large teams, scheduled releases\n\n## GitHub Flow\n\n**Structure:**\n- `main`: Always deployable\n- Feature branches from main\n- Pull requests for review\n- Deploy after merge\n\n**Workflow:**\n```bash\ngit checkout -b feature/new-feature\n# make changes\ngit push origin feature/new-feature\n# create PR, review, merge\n# deploy automatically\n```\n\n**Pros:**\n- Simple to understand\n- Continuous deployment\n- Fast feedback\n\n**Cons:**\n- No release branches\n- Requires good CI/CD\n- Main must always be stable\n\n**Best for:** Small to medium teams, continuous deployment\n\n## Trunk Based Development\n\n**Structure:**\n- `main` (trunk): Single source of truth\n- Short-lived feature branches (< 2 days)\n- Feature flags for incomplete work\n\n**Pros:**\n- Minimal merge conflicts\n- Fast integration\n- Encourages small commits\n\n**Cons:**\n- Requires feature flags\n- Needs strong testing\n- Cultural shift needed\n\n**Best for:** Experienced teams, high deployment frequency\n\n## Comparison Table\n\n| Aspect | Git Flow | GitHub Flow | Trunk Based |\n|--------|----------|-------------|-------------|\n| Complexity | High | Low | Medium |\n| Release Cycle | Scheduled | Continuous | Continuous |\n| Branch Lifespan | Long | Medium | Short |\n| Team Size | Large | Any | Any |\n\n## My Recommendation\n\n- **Startups/Small teams**: GitHub Flow\n- **Enterprise with releases**: Git Flow\n- **High-performing teams**: Trunk Based\n\nChoose based on your team's needs, not trends!",
+            "tags": [
+                "git",
+                "version-control",
+                "devops",
+                "teamwork",
+                "best-practices"
+            ],
+            "categorySlug": "devops",
+            "isPublished": true
+        }
+    ],
+    "comments": [
+        {
+            "postIndex": 0,
+            "content": "Great article! This helped me understand Express better. I've been struggling with middleware for a while.",
+            "userIndex": 1
+        },
+        {
+            "postIndex": 0,
+            "content": "Thanks for the detailed explanation. Could you also cover error handling patterns in Express?",
+            "userIndex": 2
+        },
+        {
+            "postIndex": 0,
+            "content": "I've been using Express for 2 years and still learned something new. The TypeScript setup section is exactly what I needed!",
+            "userIndex": 1,
+            "replies": [
+                {
+                    "content": "Glad you found it helpful! I'll write a follow-up article on advanced TypeScript patterns with Express.",
+                    "userIndex": 0
+                }
+            ]
+        },
+        {
+            "postIndex": 1,
+            "content": "useEffect dependencies have always confused me. This cleared things up!",
+            "userIndex": 2
+        },
+        {
+            "postIndex": 1,
+            "content": "Custom hooks are a game changer. I started extracting logic into hooks and my components are so much cleaner now.",
+            "userIndex": 1
+        },
+        {
+            "postIndex": 2,
+            "content": "We migrated from PostgreSQL to MongoDB last year and honestly regret it. For our use case with complex queries, PostgreSQL was much better.",
+            "userIndex": 2,
+            "replies": [
+                {
+                    "content": "That's a great point! It really depends on the use case. What kind of queries were problematic?",
+                    "userIndex": 0
+                },
+                {
+                    "content": "Mostly joins across 4-5 tables with aggregations. MongoDB's $lookup just doesn't compare.",
+                    "userIndex": 2
+                }
+            ]
+        },
+        {
+            "postIndex": 3,
+            "content": "Docker Compose changed my local development experience completely. No more 'works on my machine'!",
+            "userIndex": 1
+        },
+        {
+            "postIndex": 4,
+            "content": "Starting my ML journey next month. Bookmarking this!",
+            "userIndex": 2
+        },
+        {
+            "postIndex": 5,
+            "content": "This is so inspiring! I'm on month 2 of my coding journey. Thanks for sharing your experience.",
+            "userIndex": 1
+        },
+        {
+            "postIndex": 5,
+            "content": "150 applications is no joke. The job hunt is brutal but stories like this keep me motivated.",
+            "userIndex": 2
+        },
+        {
+            "postIndex": 7,
+            "content": "Needed this today. I've been working 12 hour days for the past month and feeling it.",
+            "userIndex": 1
+        }
+    ],
+    "testEndpoints": {
+        "auth": {
+            "signup": {
+                "method": "POST",
+                "url": "/api/v1/auth/signup",
+                "body": {
+                    "name": "Test User",
+                    "email": "test@example.com",
+                    "password": "TestPass@123"
+                }
+            },
+            "verifyOtp": {
+                "method": "POST",
+                "url": "/api/v1/auth/verify-otp",
+                "body": {
+                    "email": "test@example.com",
+                    "otp": "123456"
+                }
+            },
+            "resendOtp": {
+                "method": "POST",
+                "url": "/api/v1/auth/resend-otp",
+                "body": {
+                    "email": "test@example.com",
+                    "type": "signup"
+                }
+            },
+            "login": {
+                "method": "POST",
+                "url": "/api/v1/auth/login",
+                "body": {
+                    "email": "test@example.com",
+                    "password": "TestPass@123"
+                }
+            },
+            "forgotPassword": {
+                "method": "POST",
+                "url": "/api/v1/auth/forgot-password",
+                "body": {
+                    "email": "test@example.com"
+                }
+            },
+            "resetPassword": {
+                "method": "POST",
+                "url": "/api/v1/auth/reset-password",
+                "body": {
+                    "email": "test@example.com",
+                    "otp": "123456",
+                    "newPassword": "NewPass@123",
+                    "confirmPassword": "NewPass@123"
+                }
+            },
+            "refresh": {
+                "method": "POST",
+                "url": "/api/v1/auth/refresh",
+                "note": "Requires refreshToken cookie"
+            },
+            "logout": {
+                "method": "POST",
+                "url": "/api/v1/auth/logout",
+                "note": "Requires authentication"
+            }
+        },
+        "users": {
+            "getProfile": {
+                "method": "GET",
+                "url": "/api/v1/users/me",
+                "note": "Requires authentication"
+            },
+            "updateProfile": {
+                "method": "PATCH",
+                "url": "/api/v1/users/me",
+                "body": {
+                    "name": "Updated Name",
+                    "bio": "Updated bio text",
+                    "username": "newusername"
+                },
+                "note": "Supports multipart/form-data with avatar file"
+            },
+            "changePassword": {
+                "method": "PATCH",
+                "url": "/api/v1/users/me/password",
+                "body": {
+                    "currentPassword": "OldPass@123",
+                    "newPassword": "NewPass@456",
+                    "confirmPassword": "NewPass@456"
+                }
+            },
+            "deleteAvatar": {
+                "method": "DELETE",
+                "url": "/api/v1/users/me/avatar"
+            },
+            "checkUsername": {
+                "method": "GET",
+                "url": "/api/v1/users/check-username/johndoe"
+            },
+            "getPublicProfile": {
+                "method": "GET",
+                "url": "/api/v1/users/profile/johndoe"
+            }
+        },
+        "categories": {
+            "getAll": {
+                "method": "GET",
+                "url": "/api/v1/categories"
+            },
+            "getWithCounts": {
+                "method": "GET",
+                "url": "/api/v1/categories/with-counts"
+            },
+            "getPopularTags": {
+                "method": "GET",
+                "url": "/api/v1/categories/tags/popular?limit=20"
+            },
+            "getBySlug": {
+                "method": "GET",
+                "url": "/api/v1/categories/technology"
+            },
+            "create": {
+                "method": "POST",
+                "url": "/api/v1/categories",
+                "body": {
+                    "name": "New Category",
+                    "description": "Category description",
+                    "color": "#FF5733",
+                    "icon": "star"
+                },
+                "note": "Requires admin authentication"
+            },
+            "update": {
+                "method": "PATCH",
+                "url": "/api/v1/categories/:id",
+                "body": {
+                    "name": "Updated Category",
+                    "isActive": true
+                },
+                "note": "Requires admin authentication"
+            },
+            "delete": {
+                "method": "DELETE",
+                "url": "/api/v1/categories/:id",
+                "note": "Requires admin authentication"
+            }
+        },
+        "posts": {
+            "getAll": {
+                "method": "GET",
+                "url": "/api/v1/blog?page=1&limit=10&sortBy=createdAt&sortOrder=desc"
+            },
+            "getByCategory": {
+                "method": "GET",
+                "url": "/api/v1/blog?category=technology"
+            },
+            "getByTag": {
+                "method": "GET",
+                "url": "/api/v1/blog?tag=nodejs"
+            },
+            "search": {
+                "method": "GET",
+                "url": "/api/v1/blog?search=react"
+            },
+            "getBySlug": {
+                "method": "GET",
+                "url": "/api/v1/blog/getting-started-with-nodejs-and-express-in-2024"
+            },
+            "create": {
+                "method": "POST",
+                "url": "/api/v1/blog",
+                "body": {
+                    "title": "My New Blog Post",
+                    "description": "This is a short description of my blog post that explains what it's about.",
+                    "content": "This is the full content of my blog post. It needs to be at least 50 characters long to pass validation. Here I can write about anything I want in detail.",
+                    "category": "<category_id>",
+                    "tags": [
+                        "javascript",
+                        "tutorial",
+                        "beginner"
+                    ],
+                    "isPublished": true
+                },
+                "note": "Supports multipart/form-data with image file. Requires authentication."
+            },
+            "update": {
+                "method": "PATCH",
+                "url": "/api/v1/blog/:id",
+                "body": {
+                    "title": "Updated Title",
+                    "isPublished": false
+                }
+            },
+            "delete": {
+                "method": "DELETE",
+                "url": "/api/v1/blog/:id"
+            },
+            "toggleLike": {
+                "method": "POST",
+                "url": "/api/v1/blog/:id/like"
+            },
+            "togglePublish": {
+                "method": "PATCH",
+                "url": "/api/v1/blog/:id/publish"
+            }
+        },
+        "comments": {
+            "getPostComments": {
+                "method": "GET",
+                "url": "/api/v1/comments/post/:postId?page=1&limit=10"
+            },
+            "create": {
+                "method": "POST",
+                "url": "/api/v1/comments",
+                "body": {
+                    "postId": "<post_id>",
+                    "content": "This is my comment on the post!"
+                }
+            },
+            "reply": {
+                "method": "POST",
+                "url": "/api/v1/comments",
+                "body": {
+                    "postId": "<post_id>",
+                    "parentId": "<parent_comment_id>",
+                    "content": "This is a reply to the comment!"
+                }
+            },
+            "update": {
+                "method": "PATCH",
+                "url": "/api/v1/comments/:id",
+                "body": {
+                    "content": "Updated comment content"
+                }
+            },
+            "delete": {
+                "method": "DELETE",
+                "url": "/api/v1/comments/:id"
+            }
+        },
+        "admin": {
+            "dashboard": {
+                "method": "GET",
+                "url": "/api/v1/admin/dashboard",
+                "note": "Requires admin authentication"
+            },
+            "analytics": {
+                "method": "GET",
+                "url": "/api/v1/admin/analytics?days=30"
+            },
+            "users": {
+                "getAll": {
+                    "method": "GET",
+                    "url": "/api/v1/admin/users?page=1&limit=20&status=ACTIVE"
+                },
+                "getById": {
+                    "method": "GET",
+                    "url": "/api/v1/admin/users/:userId"
+                },
+                "update": {
+                    "method": "PATCH",
+                    "url": "/api/v1/admin/users/:userId",
+                    "body": {
+                        "role": "ADMIN",
+                        "status": "ACTIVE"
+                    }
+                },
+                "delete": {
+                    "method": "DELETE",
+                    "url": "/api/v1/admin/users/:userId"
+                },
+                "block": {
+                    "method": "POST",
+                    "url": "/api/v1/admin/users/:userId/block"
+                },
+                "unblock": {
+                    "method": "POST",
+                    "url": "/api/v1/admin/users/:userId/unblock"
+                }
+            },
+            "posts": {
+                "getAll": {
+                    "method": "GET",
+                    "url": "/api/v1/admin/posts?page=1&limit=20&isPublished=true"
+                },
+                "update": {
+                    "method": "PATCH",
+                    "url": "/api/v1/admin/posts/:postId",
+                    "body": {
+                        "isPublished": false
+                    }
+                },
+                "delete": {
+                    "method": "DELETE",
+                    "url": "/api/v1/admin/posts/:postId"
+                }
+            },
+            "comments": {
+                "getAll": {
+                    "method": "GET",
+                    "url": "/api/v1/admin/comments?page=1&limit=20"
+                },
+                "delete": {
+                    "method": "DELETE",
+                    "url": "/api/v1/admin/comments/:commentId"
+                },
+                "hardDelete": {
+                    "method": "DELETE",
+                    "url": "/api/v1/admin/comments/:commentId?hard=true"
+                },
+                "restore": {
+                    "method": "POST",
+                    "url": "/api/v1/admin/comments/:commentId/restore",
+                    "body": {
+                        "content": "Original comment content"
+                    }
+                }
+            }
+        }
+    }
+}
