@@ -1,21 +1,23 @@
 import dotenv from "dotenv";
 import { z } from "zod";
-import path from "path";
 
 const NODE_ENV = process.env.NODE_ENV || "development";
 
-// Only load .env file in development - production uses environment variables directly
-if (NODE_ENV !== "production") {
-  dotenv.config({
-    path: path.resolve(process.cwd(), `.env.${NODE_ENV}`),
-  });
-}
+// Load .env file - in production on platforms like Render, this file won't exist
+// but that's okay since env vars are set directly. Locally, it loads .env.{NODE_ENV}
+const result = dotenv.config();
+
+console.log("🔍 DEBUG: Loading env file for NODE_ENV:", NODE_ENV);
+console.log("🔍 DEBUG: Dotenv result:", result.error ? result.error.message : "OK");
+console.log("🔍 DEBUG: MONGO_URI exists:", !!process.env.MONGO_URI);
+console.log("🔍 DEBUG: JWT_SECRET exists:", !!process.env.JWT_SECRET);
+console.log("🔍 DEBUG: SMTP_FROM value:", process.env.SMTP_FROM);
 
 // ✅ ZOD SCHEMA
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
   PORT: z.coerce.number().min(1000).max(65535).default(5000).describe("Port number for the server"),
-  MONGODB_URI: z.string().min(10).describe("MongoDB connection string"),
+  MONGO_URI: z.string().min(10).describe("MongoDB connection string"),
   REDIS_URL: z.string().default("redis://localhost:6379").describe("Redis connection string"),
   JWT_SECRET: z.string().min(10).describe("Secret key for signing JWT tokens"),
   LOG_LEVEL: z.enum(["error", "warn", "info", "http", "debug"]).default("info"),

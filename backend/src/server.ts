@@ -37,7 +37,7 @@ async function startServer(port: number): Promise<void> {
       });
     });
   } catch (err) {
-    logger.error("❌ Failed to start server:", err);
+    console.error("❌ Failed to start server:", err);
     await disconnectDB();
     process.exit(1);
   }

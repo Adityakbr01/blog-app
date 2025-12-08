@@ -698,7 +698,7 @@ async function seed() {
         console.log("🌱 Starting database seeding...\n");
 
         // Connect to MongoDB
-        await mongoose.connect(env.MONGODB_URI);
+        await mongoose.connect(env.MONGO_URI);
         console.log("✅ Connected to MongoDB\n");
 
         // Clear existing data

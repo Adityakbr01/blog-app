@@ -4,10 +4,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon",
+    "dev": "nodemon",
     "build": "tsc && tsc-alias",
     "start": "node dist/src/server.js",
-    "test": "cross-env NODE_ENV=test tsx src/server.ts",
+    "test": "tsx src/server.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
