@@ -9,6 +9,9 @@
     "target": "ES2020",
     "module": "nodenext",
     "moduleResolution": "nodenext",
+    "types": [
+      "node"
+    ],
     "rootDir": "./",
     "outDir": "./dist",
     "esModuleInterop": true,
