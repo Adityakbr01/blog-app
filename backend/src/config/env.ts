@@ -28,11 +28,6 @@ const envSchema = z.object({
   CLOUDINARY_CLOUD_NAME: z.string().min(1).describe("Cloudinary cloud name"),
   CLOUDINARY_API_KEY: z.string().min(1).describe("Cloudinary API key"),
   CLOUDINARY_API_SECRET: z.string().min(1).describe("Cloudinary API secret"),
-  SMTP_HOST: z.string().min(1).describe("SMTP host for nodemailer"),
-  SMTP_PORT: z.coerce.number().default(587).describe("SMTP port for nodemailer"),
-  SMTP_USER: z.string().min(1).describe("SMTP username"),
-  SMTP_PASS: z.string().min(1).describe("SMTP password"),
-  SMTP_FROM: z.string().email().describe("Sender email for transactional mails"),
   FRONTEND_URL: z.string().url().optional().describe("Frontend application URL"),
 });
 
