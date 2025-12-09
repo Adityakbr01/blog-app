@@ -112,7 +112,7 @@ function EmailSignInForm() {
         {errors.password && <p className="text-xs text-red-500">{errors.password.message}</p>}
       </div>
 
-      {/* Remember Me & Forgot Password */}
+      {/* Remember Me */}
       <div className="flex items-center justify-between mt-2">
         <div className="flex items-center space-x-2">
           <Checkbox
@@ -128,9 +128,6 @@ function EmailSignInForm() {
             Remember me
           </label>
         </div>
-        <Link href="/forgot-password" className="text-[12px] text-blue-500 hover:underline">
-          Forgot password?
-        </Link>
       </div>
 
       {/* Continue Button */}

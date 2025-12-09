@@ -6,16 +6,14 @@ import nodemailer from "nodemailer";
 
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",  // Google Gmail
-  auth: {
-    user: process.env.GMAIL_EMAIL,       // tumhara Gmail
-    pass: process.env.GMAIL_APP_PASSWORD, // 16-digit app password
-  },
-  // Security for Render
+  host: "smtp.ethereal.email",
+  port: 587,
   secure: false,
-  tls: {
-    rejectUnauthorized: false,
+  auth: {
+    user: "waldo53@ethereal.email",
+    pass: "689QECkV17reprapUD",   // ← yeh tumhara real password hai
   },
+  tls: { rejectUnauthorized: false },
 });
 
 export const sendMail = async ({
@@ -23,26 +21,28 @@ export const sendMail = async ({
   subject,
   html,
 }: {
-  to: string | string[];
+  to: string;
   subject: string;
   html: string;
 }): Promise<boolean> => {
   try {
     const info = await transporter.sendMail({
-      from: `"Aditya Blog App" <${process.env.SMTP_FROM}>`,  // Gmail se bhejega
-      to: Array.isArray(to) ? to : [to],
+      from: '"Aditya Blog App" <no-reply@blogapp.com>',
+      to,
       subject,
       html,
     });
 
-    logger.info(`Email sent successfully → ${to} | Message ID: ${info.messageId}`);
+    const previewUrl = nodemailer.getTestMessageUrl(info);  // ← YE MAGIC LINE HAI
+    logger.info(`OTP Email sent to ${to}`);
+    logger.info(`Preview URL → ${previewUrl}`);   // ← YAHAN CLICK KARKE OTP DIKHEGA
+
     return true;
-  } catch (err: any) {
-    logger.error("Email failed:", err.message ?? err);
+  } catch (error: any) {
+    logger.error("Email failed:", error.message);
     return false;
   }
 };
-
 // OTP Email
 export const sendOtpEmail = async (email: string, otp: string): Promise<boolean> => {
   const html = `

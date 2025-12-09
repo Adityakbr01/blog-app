@@ -84,14 +84,14 @@ function EmailStep({ form, showPassword, togglePassword, loading, errors, onSubm
                 {errors.password && <p className="text-xs text-red-500">{errors.password.message}</p>}
             </div>
 
-            {/* Continue Button */}
+            {/* Sign Up Button */}
             <div className="flex justify-end">
                 <Button
                     type="submit"
                     disabled={loading}
                     className="text-[12px] px-3 py-1 h-fit w-fit rounded-full border border-[#3c3c3c] bg-(--custom-primary) hover:bg-(--custom-primary) cursor-pointer text-black"
                 >
-                    {loading ? <Loader2 className="animate-spin h-4 w-4" /> : "Continue"}
+                    {loading ? <Loader2 className="animate-spin h-4 w-4" /> : "Sign Up"}
                 </Button>
             </div>
 

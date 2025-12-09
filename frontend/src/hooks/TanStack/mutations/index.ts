@@ -2,11 +2,7 @@
 export {
     useSignup,
     useLogin,
-    useVerifyOtp,
-    useResendOtp,
     useLogout,
-    useForgotPassword,
-    useResetPassword,
 } from "./auth";
 
 // Re-export all post mutations and queries

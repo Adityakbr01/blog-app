@@ -69,7 +69,7 @@ function HomePage() {
                             </p>
                         </div>
                         <Button variant="outline" className="border-none" asChild>
-                            <Link href="/blogs" className="group">
+                            <Link href={BASE_LINKS[1].href} className="group">
                                 View All
                                 <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
                             </Link>

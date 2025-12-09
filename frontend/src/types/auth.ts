@@ -1,7 +1,7 @@
 // Auth Types matching backend API responses
 
 export type UserRole = "user" | "admin";
-export type UserStatus = "pending" | "active" | "blocked";
+export type UserStatus = "active" | "blocked";
 
 export interface AuthUser {
     id: string;
@@ -24,10 +24,6 @@ export interface ApiResponse<T = unknown> {
 
 // Auth Response Types
 export interface SignupResponse {
-    email: string;
-}
-
-export interface VerifyOtpResponse {
     user: AuthUser;
     accessToken: string;
 }
@@ -41,14 +37,6 @@ export interface RefreshTokenResponse {
     accessToken: string;
 }
 
-export interface ResendOtpResponse {
-    email: string;
-}
-
-export interface ForgotPasswordResponse {
-    email: string;
-}
-
 // Auth Input Types (matching backend schemas)
 export interface SignupInput {
     name: string;
@@ -59,25 +47,4 @@ export interface SignupInput {
 export interface LoginInput {
     email: string;
     password: string;
-}
-
-export interface VerifyOtpInput {
-    email: string;
-    otp: string;
-}
-
-export interface ResendOtpInput {
-    email: string;
-    type: "signup" | "forgot-password";
-}
-
-export interface ForgotPasswordInput {
-    email: string;
-}
-
-export interface ResetPasswordInput {
-    email: string;
-    otp: string;
-    newPassword: string;
-    confirmPassword: string;
 }

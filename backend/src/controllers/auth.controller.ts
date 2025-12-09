@@ -3,7 +3,7 @@ import * as AuthService from "@/services/auth.service.js";
 import { asyncWrap } from "@/utils/asyncWrap.js";
 import { clearAuthCookies, setAuthCookies } from "@/utils/authCookies.js";
 import { sendResponse } from "@/utils/sendResponse.js";
-import { LoginInput, SignupInput, VerifyOtpInput, ResendOtpInput, ResetPasswordInput } from "@/validations/auth.schema.js";
+import { LoginInput, SignupInput } from "@/validations/auth.schema.js";
 import { Request, Response } from "express";
 
 // ---- Signup Controller ----
@@ -12,51 +12,15 @@ export const signup = asyncWrap(async (req: Request, res: Response) => {
 
   const result = await AuthService.signup(data);
 
-  return sendResponse(res, HTTP_STATUS.CREATED, result.message, { email: result.email });
-});
-
-// ---- Verify OTP Controller ----
-export const verifyOtp = asyncWrap(async (req: Request, res: Response) => {
-  const data: VerifyOtpInput = req.body;
-
-  const result = await AuthService.verifyOtpAndActivate(data);
-
   setAuthCookies(res, {
     accessToken: result.accessToken,
     refreshToken: result.refreshToken,
   });
 
-  return sendResponse(res, HTTP_STATUS.OK, result.message, {
+  return sendResponse(res, HTTP_STATUS.CREATED, result.message, {
     user: result.user,
     accessToken: result.accessToken,
   });
-});
-
-// ---- Resend OTP Controller ----
-export const resendOtp = asyncWrap(async (req: Request, res: Response) => {
-  const data: ResendOtpInput = req.body;
-
-  const result = await AuthService.resendOtp(data);
-
-  return sendResponse(res, HTTP_STATUS.OK, result.message, { email: result.email });
-});
-
-// ---- Forgot Password Controller ----
-export const forgotPassword = asyncWrap(async (req: Request, res: Response) => {
-  const { email } = req.body;
-
-  const result = await AuthService.forgotPassword(email);
-
-  return sendResponse(res, HTTP_STATUS.OK, result.message, { email: result.email });
-});
-
-// ---- Reset Password Controller ----
-export const resetPassword = asyncWrap(async (req: Request, res: Response) => {
-  const data: ResetPasswordInput = req.body;
-
-  const result = await AuthService.resetPassword(data);
-
-  return sendResponse(res, HTTP_STATUS.OK, result.message);
 });
 
 // ---- Login Controller ----
